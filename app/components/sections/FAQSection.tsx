@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     question: 'Preciso pagar mensalidade?',
-    answer: 'Não! Não há mensalidade, taxa de inscrição ou custos adicional. Você tem acesso ao site totalmente gratuito e sua unica mensalidade será deixar o banner que iremos te entregar após a conclusão da parceria na sua loja para divulgar nossa empresa.',
+    answer: 'Não! Não há mensalidade, taxa de inscrição ou custos adicionais. Você tem acesso ao site totalmente gratuito e sua unica mensalidade será deixar o banner que iremos te entregar após a conclusão da parceria na sua loja para divulgar nossa empresa.',
   },
   {
     question: 'Como recebo minha comissão?',
