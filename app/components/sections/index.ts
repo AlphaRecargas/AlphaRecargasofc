@@ -1,6 +1,0 @@
-export { HeroSection } from './HeroSection'
-export { BenefitsSection } from './BenefitsSection'
-export { HowItWorksSection } from './HowItWorksSection'
-export { TrustSection } from './TrustSection'
-export { FAQSection } from './FAQSection'
-export { Footer } from './Footer'
