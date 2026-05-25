@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion'
 
 const trustItems = [
-  { label: 'Parceiros Ativos', value: '500+', icon: '👥' },
-  { label: 'Recargas Processadas', value: '300k+', icon: '📊' },
-  { label: 'Tempo Médio', value: '< 2 seg', icon: '⚡' },
+  { label: 'Parceiros Ativos', value: '100+', icon: '👥' },
+  { label: 'Recargas Processadas', value: '1k+', icon: '📊' },
+  { label: 'Tempo Médio', value: '< 15 minutos', icon: '⚡' },
   { label: 'Uptime', value: '99.9%', icon: '✅' },
 ]
 
@@ -13,7 +13,6 @@ const operators = [
   { name: 'Vivo', status: 'online' },
   { name: 'Claro', status: 'online' },
   { name: 'TIM', status: 'online' },
-  { name: 'Oi', status: 'online' },
 ]
 
 const statusItems = [
