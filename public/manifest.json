@@ -1,0 +1,26 @@
+{
+  "name": "Alpha Recargas - Seja um Colaborador",
+  "short_name": "Alpha Recargas",
+  "description": "Quer se tornar um colaborador Alpha Recargas? Entre em contato pelo WhatsApp e inicie sua parceria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00bcd4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/alpha-recargas-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/alpha-recargas-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "utilities"],
+  "lang": "pt-BR"
+}
