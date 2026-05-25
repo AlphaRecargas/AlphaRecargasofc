@@ -7,7 +7,7 @@ import type { NextRequest } from "next/server"
  * Para mudar o destino, edite apenas esta linha.
  * O QR Code físico nunca precisará ser trocado.
  */
-const DESTINATION_URL = "https://v0-alfa-recarrega-whatsapp.vercel.app/"
+const DESTINATION_URL = "https://v0-alpha-recargas-whatsapp.vercel.app/"
 
 export function middleware(request: NextRequest) {
   // Redireciona /qr para a URL de destino configurada
