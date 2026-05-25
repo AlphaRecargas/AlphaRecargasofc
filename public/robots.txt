@@ -1,8 +1,0 @@
-# Alpha Recargas - Robots.txt
-# https://v0-alfa-recarrega-whatsapp.vercel.app
-
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://v0-alfa-recarrega-whatsapp.vercel.app/sitemap.xml
