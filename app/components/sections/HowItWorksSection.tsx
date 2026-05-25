@@ -6,7 +6,7 @@ const steps = [
   {
     number: 1,
     title: 'Entre em contato pelo WhatsApp',
-    description: 'Clique no botão abaixo e fale conosco para iniciar sua parceria',
+    description: 'Clique no botão "fale conosco" para iniciar sua parceria',
     icon: '💬',
   },
   {

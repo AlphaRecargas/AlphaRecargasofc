@@ -106,8 +106,8 @@ export function HeroSection() {
           className="grid grid-cols-3 gap-4 md:gap-6 mb-8 max-w-2xl mx-auto"
         >
           {[
-            { label: 'Parceiros Ativos', value: '500+' },
-            { label: 'Recargas Diárias', value: '10k+' },
+            { label: 'Parceiros Ativos', value: '100+' },
+            { label: 'Recargas Diárias', value: '1k+' },
             { label: 'Suporte 24/7', value: 'Online' },
           ].map((stat, i) => (
             <div

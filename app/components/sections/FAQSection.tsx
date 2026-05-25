@@ -10,15 +10,15 @@ const faqs = [
   },
   {
     question: 'Preciso pagar mensalidade?',
-    answer: 'Não! Não há mensalidade, taxa de inscrição ou custos hidden. Você só paga uma pequena taxa por transação e ganha a comissão diferença.',
+    answer: 'Não! Não há mensalidade, taxa de inscrição ou custos adicional. Você tem acesso ao site totalmente gratuito e sua unica mensalidade será deixar o banner que iremos te entregar após a conclusão da parceria na sua loja para divulgar nossa empresa.',
   },
   {
     question: 'Como recebo minha comissão?',
-    answer: 'Sua comissão é calculada automaticamente após cada venda e pode ser resgatada diretamente para sua conta bancária via PIX ou transferência.',
+    answer: 'Sua comissão é calculada automaticamente pela nossa equipe e seu lucro você recebe durante sua venda.',
   },
   {
     question: 'As recargas caem na hora?',
-    answer: 'Sim! As recargas são processadas em tempo real. Seus clientes recebem a recarga em poucos segundos após o pagamento.',
+    answer: 'Sim! As recargas são processadas em tempo real. Seus clientes recebem a recarga em poucos minutos após o pagamento.',
   },
   {
     question: 'Vocês têm suporte?',
