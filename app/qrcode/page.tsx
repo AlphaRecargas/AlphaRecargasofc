@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import QRCode from 'qrcode'
-
+const QR_URL = "https://v0-alpha-recargas-whatsapp.vercel.app/qr"
 // URL do QR Code - aponta para a rota /qr que faz o redirecionamento
 const QR_URL = "https://v0-alpha-recargas-whatsapp.vercel.app/qr"
 
