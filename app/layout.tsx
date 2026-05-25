@@ -9,11 +9,11 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 const siteUrl = 'https://v0-alfa-recarrega-whatsapp.vercel.app'
 
 export const metadata: Metadata = {
-  title: 'Alpha Recargas - Seja um Colaborador',
-  description: 'Quer se tornar um colaborador Alpha Recargas? Entre em contato pelo WhatsApp e inicie sua parceria. Atendimento 24 horas. Rápido, Seguro, Sempre com você.',
+  title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
+  description: 'Transforme sua loja em um ponto de recargas. Sistema rápido, suporte via WhatsApp e comissão em cada venda. Plataforma moderna e confiável. Atendimento 24/7.',
   generator: 'v0.app',
   applicationName: 'Alpha Recargas',
-  keywords: ['Alpha Recargas', 'recargas', 'colaborador', 'parceria', 'WhatsApp', 'atendimento 24 horas'],
+  keywords: ['Alpha Recargas', 'recargas', 'colaborador', 'parceria', 'ganhar dinheiro', 'ponto de recargas', 'WhatsApp', 'comissão', 'loja'],
   authors: [{ name: 'Alpha Recargas' }],
   creator: 'Alpha Recargas',
   publisher: 'Alpha Recargas',
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     url: siteUrl,
     siteName: 'Alpha Recargas',
-    title: 'Alpha Recargas - Seja um Colaborador',
-    description: 'Quer se tornar um colaborador Alpha Recargas? Entre em contato pelo WhatsApp e inicie sua parceria. Atendimento 24 horas.',
+    title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
+    description: 'Transforme sua loja em um ponto de recargas com sistema rápido, suporte via WhatsApp e comissão em cada venda.',
     images: [
       {
         url: `${siteUrl}/images/alpha-recargas-logo.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Alpha Recargas - Rápido, Seguro, Sempre com você',
+        alt: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
       },
     ],
   },
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   // Twitter / X
   twitter: {
     card: 'summary_large_image',
-    title: 'Alpha Recargas - Seja um Colaborador',
-    description: 'Quer se tornar um colaborador Alpha Recargas? Entre em contato pelo WhatsApp e inicie sua parceria. Atendimento 24 horas.',
+    title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
+    description: 'Transforme sua loja em um ponto de recargas com sistema rápido, suporte via WhatsApp e comissão em cada venda.',
     images: [`${siteUrl}/images/alpha-recargas-logo.jpg`],
   },
   
@@ -59,11 +59,9 @@ export const metadata: Metadata = {
   
   // Icons
   icons: {
-    icon: [
-      { url: '/images/alpha-recargas-logo.jpg', type: 'image/jpeg' },
-    ],
+    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
     apple: '/images/alpha-recargas-logo.jpg',
-    shortcut: '/images/alpha-recargas-logo.jpg',
+    shortcut: '/favicon.ico',
   },
   
   // Canonical URL
@@ -92,8 +90,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className="bg-black">
-      <body className="font-sans antialiased">
+    <html lang="pt-BR" className="bg-[#0a0e27] dark">
+      <body className="font-sans antialiased bg-[#0a0e27]">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
