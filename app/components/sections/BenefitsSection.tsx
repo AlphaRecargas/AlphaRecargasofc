@@ -6,12 +6,12 @@ const benefits = [
   {
     icon: '💰',
     title: 'Comissão em cada recarga',
-    description: 'Ganhe uma porcentagem em cada recargelizada pelo sistema de seus clientes',
+    description: 'Ganhe uma porcentagem em cada recarga realizada pelo  sistema.',
   },
   {
     icon: '⚡',
     title: 'Sistema rápido e simples',
-    description: 'Recargas processadas em segundos com interface intuitiva e fácil de usar',
+    description: 'Recargas processadas em minutos com interface intuitiva e fácil de usar',
   },
   {
     icon: '💬',
