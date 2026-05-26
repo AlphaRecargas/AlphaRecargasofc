@@ -3,6 +3,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
+// ========================================
+// CONFIGURE SEUS NÚMEROS AQUI
+// ========================================
 const numerosWhatsApp = [
   {
     nome: "Vinicius",
@@ -15,6 +18,7 @@ const numerosWhatsApp = [
     mensagem: "Olá! Escaneei o QR Code do panfleto e tenho interesse em me tornar um parceiro/colaborador da Alpha Recargas. Poderia me passar mais informações?",
   },
 ]
+// ========================================
 
 export function FloatingWhatsApp() {
   const [mostrarNumeros, setMostrarNumeros] = useState(false)
