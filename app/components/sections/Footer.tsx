@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { LogoAlpha } from '@/components/logo-alpha'
 
 // ========================================
 // CONFIGURE SEUS NÚMEROS AQUI
@@ -39,11 +40,9 @@ export function Footer() {
         >
           {/* Company Info */}
           <div className="text-center md:text-left">
-            <h3 className="text-xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
-              Alpha Recargas
-            </h3>
-            <p className="text-sm text-zinc-400">
-              Plataforma moderna para você ganhar dinheiro vendendo recargas
+            <LogoAlpha size="md" />
+            <p className="text-sm text-zinc-400 mt-2">
+              Plataforma moderna para voce ganhar dinheiro vendendo recargas
             </p>
           </div>
 
@@ -68,7 +67,7 @@ export function Footer() {
 
           {/* Hours */}
           <div className="text-center md:text-right">
-            <p className="text-sm text-zinc-400 mb-1">Horário de atendimento</p>
+            <p className="text-sm text-zinc-400 mb-1">Horario de atendimento</p>
             <p className="text-sm font-semibold text-white">24 horas por dia</p>
             <p className="text-xs text-zinc-500">Todos os dias</p>
           </div>
