@@ -1,5 +1,5 @@
 'use client'
-
+import { LogoAlpha } from '@/components/logo-alpha'
 import { HeroSection } from './components/sections/HeroSection'
 import { BenefitsSection } from './components/sections/BenefitsSection'
 import { HowItWorksSection } from './components/sections/HowItWorksSection'
