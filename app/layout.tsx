@@ -1,51 +1,26 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
-const siteUrl = 'https://v0-alfa-recarrega-whatsapp.vercel.app'
+const poppins = Poppins({ 
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+})
 
 export const metadata: Metadata = {
-  title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
-  description: 'Transforme sua loja em um ponto de recargas. Sistema rápido, suporte via WhatsApp e comissão em cada venda. Plataforma moderna e confiável. Atendimento 24/7.',
-  generator: 'v0.app',
-  applicationName: 'Alpha Recargas',
-  keywords: ['Alpha Recargas', 'recargas', 'colaborador', 'parceria', 'ganhar dinheiro', 'ponto de recargas', 'WhatsApp', 'comissão', 'loja'],
+  title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas na sua loja',
+  description: 'Transforme sua loja em um ponto de recargas. Sistema rápido, suporte via WhatsApp 24/7 e comissão em cada venda. Mais de 100 parceiros ativos e 1000+ recargas diárias.',
+  keywords: ['recargas', 'recarga de celular', 'ganhar dinheiro', 'venda de recargas', 'Alpha Recargas', 'comissão', 'WhatsApp'],
   authors: [{ name: 'Alpha Recargas' }],
   creator: 'Alpha Recargas',
   publisher: 'Alpha Recargas',
-  
-  // Open Graph - Facebook, WhatsApp, LinkedIn
-  openGraph: {
-    type: 'website',
-    locale: 'pt_BR',
-    url: siteUrl,
-    siteName: 'Alpha Recargas',
-    title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
-    description: 'Transforme sua loja em um ponto de recargas com sistema rápido, suporte via WhatsApp e comissão em cada venda.',
-    images: [
-      {
-        url: `${siteUrl}/images/alpha-recargas-logo.jpg`,
-        width: 1200,
-        height: 630,
-        alt: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
-      },
-    ],
-  },
-  
-  // Twitter / X
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
-    description: 'Transforme sua loja em um ponto de recargas com sistema rápido, suporte via WhatsApp e comissão em cada venda.',
-    images: [`${siteUrl}/images/alpha-recargas-logo.jpg`],
-  },
-  
-  // Robots
   robots: {
     index: true,
     follow: true,
@@ -57,32 +32,49 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  
-  // Icons
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: 'https://v0-alpha-recargas-whatsapp.vercel.app/',
+    siteName: 'Alpha Recargas',
+    title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
+    description: 'Transforme sua loja em um ponto de recargas. Sistema rápido, suporte via WhatsApp 24/7 e comissão em cada venda.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Alpha Recargas - Plataforma de Recargas',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
+    description: 'Transforme sua loja em um ponto de recargas. Sistema rápido, suporte via WhatsApp 24/7.',
+    images: ['/og-image.png'],
+  },
   icons: {
-    icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
-    apple: '/images/alpha-recargas-logo.jpg',
-    shortcut: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
-  
-  // Canonical URL
-  alternates: {
-    canonical: siteUrl,
-  },
-  
-  // Manifest for PWA
-  manifest: '/manifest.json',
+  manifest: '/site.webmanifest',
 }
 
 export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#10b981' },
+    { media: '(prefers-color-scheme: dark)', color: '#059669' },
+  ],
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  userScalable: true,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#000000' },
-    { media: '(prefers-color-scheme: dark)', color: '#000000' },
-  ],
 }
 
 export default function RootLayout({
@@ -91,11 +83,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className="bg-[#0a0e27] dark">
-      <body className="font-sans antialiased bg-[#0a0e27]">
+    <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
+      <body className="font-sans antialiased bg-background">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
-        <SpeedInsights />
       </body>
     </html>
   )
