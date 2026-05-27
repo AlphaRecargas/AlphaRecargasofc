@@ -42,7 +42,7 @@ export function Footer() {
           <div className="text-center md:text-left">
             <LogoAlpha size="md" />
             <p className="text-sm text-zinc-400 mt-2">
-              Plataforma moderna para voce ganhar dinheiro vendendo recargas
+              Plataforma moderna para você ganhar dinheiro vendendo recargas
             </p>
           </div>
 
