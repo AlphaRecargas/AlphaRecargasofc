@@ -3,76 +3,91 @@ import { Inter, Poppins } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
 
-const poppins = Poppins({ 
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-poppins',
 })
 
 export const metadata: Metadata = {
-  title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas na sua loja',
-  description: 'Transforme sua loja em um ponto de recargas. Sistema rápido, suporte via WhatsApp 24/7 e comissão em cada venda. Mais de 100 parceiros ativos e 1000+ recargas diárias.',
-  keywords: ['recargas', 'recarga de celular', 'ganhar dinheiro', 'venda de recargas', 'Alpha Recargas', 'comissão', 'WhatsApp'],
+  metadataBase: new URL('https://v0-alpha-recargas-whatsapp.vercel.app'),
+
+  title: 'Alpha Recargas',
+  
+  description:
+    'Sistema profissional de recargas, atendimento e gerenciamento da Alpha Recargas.',
+
+  keywords: [
+    'Alpha Recargas',
+    'recargas',
+    'recarga de celular',
+    'painel de recargas',
+    'WhatsApp',
+    'sistema de recargas',
+  ],
+
   authors: [{ name: 'Alpha Recargas' }],
+
   creator: 'Alpha Recargas',
+
   publisher: 'Alpha Recargas',
+
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
+
   openGraph: {
-    type: 'website',
-    locale: 'pt_BR',
+    title: 'Alpha Recargas',
+
+    description:
+      'Sistema profissional de recargas, atendimento e gerenciamento da Alpha Recargas.',
+
     url: 'https://v0-alpha-recargas-whatsapp.vercel.app/',
+
     siteName: 'Alpha Recargas',
-    title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
-    description: 'Transforme sua loja em um ponto de recargas. Sistema rápido, suporte via WhatsApp 24/7 e comissão em cada venda.',
+
     images: [
       {
-        url: '/og-image.png',
+        url: '/preview.png',
         width: 1200,
         height: 630,
-        alt: 'Alpha Recargas - Plataforma de Recargas',
+        alt: 'Alpha Recargas',
       },
     ],
+
+    locale: 'pt_BR',
+
+    type: 'website',
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: 'Alpha Recargas - Ganhe dinheiro vendendo recargas',
-    description: 'Transforme sua loja em um ponto de recargas. Sistema rápido, suporte via WhatsApp 24/7.',
-    images: ['/og-image.png'],
+
+    title: 'Alpha Recargas',
+
+    description:
+      'Sistema profissional de recargas, atendimento e gerenciamento da Alpha Recargas.',
+
+    images: ['/preview.png'],
   },
+
   icons: {
-    icon: [
-      { url: '/favicon.png', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/favicon.png', type: 'image/png' },
-    ],
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
   },
-  manifest: '/site.webmanifest',
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#10b981' },
-    { media: '(prefers-color-scheme: dark)', color: '#059669' },
-  ],
+  themeColor: '#10b981',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
 }
 
 export default function RootLayout({
