@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
 
 export function PlansSection() {
   const planos = [
@@ -76,14 +77,14 @@ export function PlansSection() {
                 ))}
               </ul>
 
-              {/* Botão */}
-              <button className={`w-full py-3 rounded-lg font-semibold ${
-                plano.destaque
-                  ? 'bg-cyan-500 text-white'
-                  : 'bg-white/10 text-white'
-              }`}>
+              {/* Botão PADRONIZADO */}
+              <Button
+                variant={plano.destaque ? 'default' : 'secondary'}
+                size="lg"
+                className="w-full"
+              >
                 Começar agora
-              </button>
+              </Button>
 
             </motion.div>
           ))}
