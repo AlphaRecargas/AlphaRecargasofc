@@ -11,7 +11,14 @@ export function PlansSection() {
   ]
 
   return (
-    <section id="planos" className="py-24 bg-[#0a0e27]">
+    <motion.section
+      id="planos"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.3 }}
+      className="py-24 bg-[#0a0e27]"
+    >
       <div className="max-w-6xl mx-auto px-6">
 
         <h2 className="text-4xl text-white text-center mb-16">
@@ -26,25 +33,23 @@ export function PlansSection() {
               whileHover={{
                 scale: 1.05,
                 y: -8,
-                rotateX: 5,
-                rotateY: -5,
               }}
-              className={`relative overflow-hidden p-6 rounded-2xl border ${
+              className={`relative overflow-hidden p-6 rounded-2xl border transition-all duration-300 ${
                 plano.destaque
-                  ? 'border-green-400 bg-green-500/10'
+                  ? 'border-cyan-400 bg-cyan-500/10'
                   : 'border-white/10 bg-white/5'
               }`}
             >
 
-              {/* BRILHO */}
-              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition duration-500 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              {/* glow hover */}
+              <div className="absolute inset-0 opacity-0 hover:opacity-100 transition bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
               <h3 className="text-white text-2xl mb-4">
                 {plano.nome}
               </h3>
 
               <Button
-                variant={plano.destaque ? 'gradient' : 'secondary'}
+                variant={plano.destaque ? 'default' : 'secondary'}
                 className="w-full mt-6"
               >
                 Começar agora
@@ -54,8 +59,7 @@ export function PlansSection() {
           ))}
 
         </div>
-
       </div>
-    </section>
+    </motion.section>
   )
 }
