@@ -52,7 +52,6 @@ export function HeroSection() {
       {/* NAVBAR */}
       <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/40 border-b border-white/10">
         <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-
           <h1 className="font-bold text-lg bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
             Alpha Recargas
           </h1>
@@ -62,13 +61,12 @@ export function HeroSection() {
             <a href="#" className="hover:text-white transition">Benefícios</a>
             <a href="#" className="hover:text-white transition">Contato</a>
           </div>
-
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="relative bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden pt-40 pb-4">
-        
+      <section className="relative bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden pt-40 pb-10">
+
         {/* BACKGROUND */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
@@ -83,54 +81,102 @@ export function HeroSection() {
           />
         </div>
 
-        {/* CONTENT */}
+        {/* CONTEÚDO */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative z-10 max-w-5xl mx-auto px-6"
+          className="relative z-10 max-w-5xl mx-auto px-6 text-center"
         >
 
+          {/* TÍTULO */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-black text-center mb-6"
+            className="text-4xl md:text-6xl font-black mb-6 leading-tight"
           >
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Ganhe dinheiro
+              Ganhe dinheiro todos os dias
             </span>
             <br />
-            <span className="text-white">vendendo recargas</span>
+            <span className="text-white">
+              vendendo recargas na sua loja
+            </span>
           </motion.h1>
 
-          <motion.div variants={itemVariants} className="flex justify-center">
-            <button
+          {/* SUBTÍTULO */}
+          <motion.p
+            variants={itemVariants}
+            className="text-lg md:text-xl text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed"
+          >
+            Transforme seu estabelecimento em uma fonte de renda com recargas automáticas,
+            suporte via WhatsApp e <span className="text-green-400 font-semibold">lucro em cada venda</span>
+          </motion.p>
+
+          {/* BOTÃO */}
+          <motion.div variants={itemVariants}>
+            <motion.button
               onClick={() => setShowContacts(true)}
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl"
+              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0, 174, 255, 0.6)' }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold rounded-xl text-lg shadow-xl transition-all duration-300"
             >
-              Fale no WhatsApp
-            </button>
+              Falar no WhatsApp agora
+            </motion.button>
+          </motion.div>
+
+          {/* PROVA SOCIAL */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-10 grid grid-cols-3 gap-4 max-w-xl mx-auto"
+          >
+            <div>
+              <p className="text-2xl font-bold text-cyan-400">+100</p>
+              <p className="text-sm text-zinc-400">Parceiros</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-cyan-400">+1.000</p>
+              <p className="text-sm text-zinc-400">Recargas/dia</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-cyan-400">24h</p>
+              <p className="text-sm text-zinc-400">Suporte</p>
+            </div>
           </motion.div>
 
         </motion.div>
 
-        {/* MODAL */}
+        {/* MODAL CONTATOS */}
         <AnimatePresence>
           {showContacts && (
             <motion.div
-              className="fixed inset-0 bg-black/70 flex items-center justify-center"
+              className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
               onClick={() => setShowContacts(false)}
             >
-              <div className="bg-black p-6 rounded-xl">
+              <motion.div
+                className="bg-[#0f1535] p-6 rounded-xl w-full max-w-sm"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <h3 className="text-white text-xl mb-4 text-center">
+                  Escolha um atendente
+                </h3>
+
                 {contatos.map((c) => (
                   <button
                     key={c.numero}
                     onClick={() => handleWhatsAppClick(c.numero)}
-                    className="block text-white mb-2"
+                    className="w-full bg-white/5 hover:bg-white/10 text-white p-3 rounded-lg mb-2"
                   >
-                    {c.nome}
+                    {c.nome} — {c.descricao}
                   </button>
                 ))}
-              </div>
+
+                <button
+                  onClick={() => setShowContacts(false)}
+                  className="mt-4 w-full text-zinc-400"
+                >
+                  Cancelar
+                </button>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
