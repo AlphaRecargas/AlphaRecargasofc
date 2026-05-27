@@ -57,7 +57,7 @@ export function BenefitsSection() {
   }
 
   return (
-    <section className="relative py-16 md:py-24 px-6 bg-gradient-to-br from-[#0f1535] via-[#1a1f3a] to-[#0a0e27] overflow-hidden">
+    <section className="relative py-10 md:py-16 px-6 bg-gradient-to-br from-[#0f1535] via-[#1a1f3a] to-[#0a0e27] overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute w-80 h-80 bg-green-500/5 rounded-full blur-3xl -top-40 -right-40" />
