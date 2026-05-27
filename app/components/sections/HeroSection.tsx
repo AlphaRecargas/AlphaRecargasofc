@@ -48,7 +48,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden pt-20 pb-10">
+    <section className="relative min-h-screen bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden pt-20 pb-4">
       {/* Animated background blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
