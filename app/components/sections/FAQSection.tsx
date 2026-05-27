@@ -6,102 +6,72 @@ import { useState } from 'react'
 const faqs = [
   {
     question: 'Como funciona a parceria?',
-    answer: 'Você entra em contato conosco, recebe acesso ao sistema, e passa a vender recargas para seus clientes. Ganhe comissão em cada venda sem investimento inicial.',
+    answer:
+      'Você entra em contato conosco, recebe acesso ao sistema e começa a vender recargas.',
   },
   {
     question: 'Preciso pagar mensalidade?',
-    answer: 'Não! Não há mensalidade, taxa de inscrição ou custos adicional. Você tem acesso ao site totalmente gratuito e sua unica mensalidade será deixar o banner que iremos te entregar após a conclusão da parceria na sua loja para divulgar nossa empresa.',
+    answer:
+      'Não existe mensalidade ou taxa de entrada.',
   },
   {
     question: 'Como recebo minha comissão?',
-    answer: 'Sua comissão é calculada automaticamente pela nossa equipe e seu lucro você recebe durante sua venda.',
-  },
-  {
-    question: 'As recargas caem na hora?',
-    answer: 'Sim! As recargas são processadas em tempo real. Seus clientes recebem a recarga em poucos minutos após o pagamento.',
-  },
-  {
-    question: 'Vocês têm suporte?',
-    answer: 'Claro! Temos suporte 24/7 via WhatsApp. Nossa equipe está sempre pronta para ajudá-lo com qualquer dúvida ou problema.',
-  },
-  {
-    question: 'Como faço para começar?',
-    answer: 'Clique no botão WhatsApp abaixo, entre em contato com nossa equipe e inicie sua parceria em poucos minutos!',
-  },
-]
-
-const numerosWhatsApp = [
-  {
-    nome: "Vinicius",
-    numero: "5511987901884",
-    mensagem: "Olá! Escaneei o QR Code do panfleto e tenho interesse em me tornar um parceiro/colaborador da Alpha Recargas. Poderia me passar mais informações?",
-  },
-  {
-    nome: "Robson",
-    numero: "5511966061655",
-    mensagem: "Olá! Escaneei o QR Code do panfleto e tenho interesse em me tornar um parceiro/colaborador da Alpha Recargas. Poderia me passar mais informações?",
+    answer:
+      'Seu lucro é calculado automaticamente em cada venda.',
   },
 ]
 
 export function FAQSection() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
-  const [mostrarNumeros, setMostrarNumeros] = useState(false)
+  const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="relative py-16 md:py-24 px-6 bg-gradient-to-br from-[#0f1535] via-[#1a1f3a] to-[#0a0e27] overflow-hidden">
-      
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute w-80 h-80 bg-blue-500/5 rounded-full blur-3xl -bottom-40 left-1/4" />
-      </div>
+    <motion.section
+      id="faq"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.3 }}
+      className="py-24 bg-[#0a0e27]"
+    >
+      <div className="max-w-4xl mx-auto px-6">
 
-      <div className="relative z-10 max-w-3xl mx-auto">
-
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Perguntas frequentes
-            </span>
-          </h2>
-          <p className="text-zinc-400 text-lg">Tudo que você precisa saber</p>
-        </motion.div>
+        <h2 className="text-4xl text-white text-center mb-12">
+          Perguntas frequentes
+        </h2>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              className="glass rounded-xl border border-cyan-500/20 overflow-hidden"
+
+          {faqs.map((faq, i) => (
+            <div
+              key={i}
+              className="border border-white/10 rounded-xl overflow-hidden"
             >
+
               <button
-                onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                className="w-full px-6 py-4 flex justify-between text-left"
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full text-left p-5 text-white flex justify-between"
               >
-                <span className="text-white">{faq.question}</span>
+                {faq.question}
               </button>
 
               <AnimatePresence>
-                {expandedIndex === index && (
+                {open === i && (
                   <motion.div
-                    initial={{ height: 0 }}
-                    animate={{ height: 'auto' }}
-                    exit={{ height: 0 }}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="px-5 pb-5 text-zinc-400"
                   >
-                    <p className="px-6 pb-4 text-zinc-400">
-                      {faq.answer}
-                    </p>
+                    {faq.answer}
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
-          ))}
-        </div>
 
+            </div>
+          ))}
+
+        </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
