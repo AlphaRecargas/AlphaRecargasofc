@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
   const [showContacts, setShowContacts] = useState(false)
@@ -112,16 +113,15 @@ export function HeroSection() {
             suporte via WhatsApp e <span className="text-green-400 font-semibold">lucro em cada venda</span>
           </motion.p>
 
-          {/* BOTÃO */}
+          {/* BOTÃO PADRONIZADO */}
           <motion.div variants={itemVariants}>
-            <motion.button
+            <Button
+              size="lg"
               onClick={() => setShowContacts(true)}
-              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0, 174, 255, 0.6)' }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold rounded-xl text-lg shadow-xl transition-all duration-300"
+              className="text-lg px-10 py-6"
             >
               Falar no WhatsApp agora
-            </motion.button>
+            </Button>
           </motion.div>
 
           {/* PROVA SOCIAL */}
@@ -145,7 +145,7 @@ export function HeroSection() {
 
         </motion.div>
 
-        {/* MODAL CONTATOS */}
+        {/* MODAL */}
         <AnimatePresence>
           {showContacts && (
             <motion.div
@@ -161,21 +161,23 @@ export function HeroSection() {
                 </h3>
 
                 {contatos.map((c) => (
-                  <button
+                  <Button
                     key={c.numero}
+                    variant="secondary"
+                    className="w-full mb-2"
                     onClick={() => handleWhatsAppClick(c.numero)}
-                    className="w-full bg-white/5 hover:bg-white/10 text-white p-3 rounded-lg mb-2"
                   >
                     {c.nome} — {c.descricao}
-                  </button>
+                  </Button>
                 ))}
 
-                <button
+                <Button
+                  variant="ghost"
+                  className="w-full mt-4"
                   onClick={() => setShowContacts(false)}
-                  className="mt-4 w-full text-zinc-400"
                 >
                   Cancelar
-                </button>
+                </Button>
               </motion.div>
             </motion.div>
           )}
