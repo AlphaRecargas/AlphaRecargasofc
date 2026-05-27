@@ -7,66 +7,42 @@ export function Loader({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false)
-    }, 1200)
-
-    return () => clearTimeout(timeout)
+    const t = setTimeout(() => setLoading(false), 900)
+    return () => clearTimeout(t)
   }, [])
 
   return (
     <AnimatePresence mode="wait">
       {loading ? (
         <motion.div
-          key="loader"
-          className="fixed inset-0 bg-[#0a0e27] flex items-center justify-center z-50"
-          initial={{ opacity: 1 }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a0e27]"
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
-          {/* Glow de fundo */}
-          <div className="absolute w-[400px] h-[400px] bg-cyan-500/20 blur-3xl rounded-full" />
+          <div className="absolute w-[500px] h-[500px] bg-cyan-400/10 blur-3xl rounded-full" />
 
-          {/* Loader content */}
           <motion.div
-            className="relative text-center"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="text-center"
           >
             <motion.div
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.8, 1, 0.8],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.5,
-                ease: 'easeInOut',
-              }}
-              className="text-white text-2xl font-semibold tracking-wide"
+              animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.05, 1] }}
+              transition={{ repeat: Infinity, duration: 1.4 }}
+              className="text-2xl font-semibold"
             >
               Alpha Recargas
             </motion.div>
 
-            <motion.div
-              className="mt-3 h-[2px] w-32 bg-cyan-400 mx-auto"
-              animate={{ scaleX: [0.4, 1, 0.4] }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.2,
-                ease: 'easeInOut',
-              }}
-            />
+            <div className="mt-3 h-[2px] w-28 bg-cyan-400 mx-auto animate-pulse" />
           </motion.div>
         </motion.div>
       ) : (
         <motion.div
-          key="content"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.5 }}
         >
           {children}
         </motion.div>
