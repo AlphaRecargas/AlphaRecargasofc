@@ -11,7 +11,7 @@ export function PlansSection() {
   ]
 
   return (
-    <section className="py-24 bg-[#0a0e27]">
+    <section id="planos" className="py-24 bg-[#0a0e27]">
       <div className="max-w-6xl mx-auto px-6">
 
         <h2 className="text-4xl text-white text-center mb-16">
