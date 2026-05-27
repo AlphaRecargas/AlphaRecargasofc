@@ -2,18 +2,11 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 
-// Importações blindadas: tentam puxar como padrão ou nomeada se falhar
-import ProvidersComponent from '../components/theme-provider'
-import * as ProvidersModule from '../components/theme-provider'
-import LoaderComponent from '../components/loader'
-import * as LoaderModule from '../components/loader'
+// Correção aqui: Adicionando as chaves { } para corresponder à exportação correta
+import { Providers } from '../components/theme-provider'
+import { Loader } from '../components/loader'
 
 import './globals.css'
-
-// Garante que o Providers seja resolvido corretamente independente do tipo de export
-const Providers = ProvidersComponent || (ProvidersModule as any).Providers || ((ProvidersModule as any).default)
-// Garante que o Loader seja resolvido corretamente independente do tipo de export
-const Loader = LoaderComponent || (LoaderModule as any).Loader || ((LoaderModule as any).default)
 
 const inter = Inter({
   subsets: ['latin'],
@@ -57,24 +50,16 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
       <body className="font-sans antialiased overflow-x-hidden">
-        {Providers ? (
-          <Providers>
-            {Loader ? (
-              <Loader>
-                <div className="relative min-h-screen bg-black text-white overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.15),transparent_55%)]" />
-                  <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:42px_42px]" />
-                  {children}
-                  {process.env.NODE_ENV === 'production' && <Analytics />}
-                </div>
-              </Loader>
-            ) : (
-              <div className="relative min-h-screen bg-black text-white overflow-hidden">{children}</div>
-            )}
-          </Providers>
-        ) : (
-          <div className="relative min-h-screen bg-black text-white overflow-hidden">{children}</div>
-        )}
+        <Providers>
+          <Loader>
+            <div className="relative min-h-screen bg-black text-white overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.15),transparent_55%)]" />
+              <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:42px_42px]" />
+              {children}
+              {process.env.NODE_ENV === 'production' && <Analytics />}
+            </div>
+          </Loader>
+        </Providers>
       </body>
     </html>
   )
