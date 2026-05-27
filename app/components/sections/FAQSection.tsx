@@ -35,7 +35,7 @@ export function FAQSection() {
     >
       <div className="max-w-4xl mx-auto px-6">
 
-        <h2 className="text-4xl text-white text-center mb-12">
+        <h2 className="text-4xl text-white text-center mb-12 font-sans">
           Perguntas frequentes
         </h2>
 
@@ -44,14 +44,17 @@ export function FAQSection() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="border border-white/10 rounded-xl overflow-hidden"
+              className="border border-white/10 rounded-xl overflow-hidden bg-white/[0.01]"
             >
 
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full text-left p-5 text-white flex justify-between"
+                className="w-full text-left p-5 text-white flex justify-between items-center font-sans font-medium hover:bg-white/[0.02] transition-colors"
               >
-                {faq.question}
+                <span>{faq.question}</span>
+                <span className={`text-cyan-400 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`}>
+                  ▼
+                </span>
               </button>
 
               <AnimatePresence>
@@ -60,9 +63,12 @@ export function FAQSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="px-5 pb-5 text-zinc-400"
+                    className="overflow-hidden"
                   >
-                    {faq.answer}
+                    {/* Atualizado para text-zinc-200 para melhor contraste e leitura em telas mobile */}
+                    <div className="px-5 pb-5 text-zinc-200 font-sans text-base leading-relaxed">
+                      {faq.answer}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -75,3 +81,4 @@ export function FAQSection() {
     </motion.section>
   )
 }
+
