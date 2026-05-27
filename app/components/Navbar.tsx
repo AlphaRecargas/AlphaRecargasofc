@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
+
 import { LogoAlpha } from '@/components/logo-alpha'
 import { Button } from '@/components/ui/button'
-import { Menu, X } from 'lucide-react'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 const links = [
   { name: 'Início', href: '#' },
@@ -59,7 +61,6 @@ export function Navbar() {
     return () => observer.disconnect()
   }, [])
 
-  // SCROLL SUAVE
   const handleClick = (href: string) => {
     setMenuOpen(false)
 
@@ -100,19 +101,23 @@ export function Navbar() {
             <button
               key={link.href}
               onClick={() => handleClick(link.href)}
-              className={`transition ${
-                active === link.href
-                  ? 'text-white'
-                  : 'text-zinc-400 hover:text-white'
-              }`}
+              className="relative text-zinc-400 hover:text-white transition"
             >
               {link.name}
+
+              {active === link.href && (
+                <motion.div
+                  layoutId="underline"
+                  className="absolute -bottom-1 left-0 w-full h-[2px] bg-cyan-400"
+                />
+              )}
             </button>
           ))}
         </nav>
 
-        {/* CTA */}
+        {/* CTA DESKTOP */}
         <div className="hidden md:flex items-center gap-4">
+          <ThemeToggle />
           <Button variant="gradient" size="sm">
             Começar
           </Button>
@@ -147,7 +152,11 @@ export function Navbar() {
                 </button>
               ))}
 
-              <Button variant="gradient">Começar</Button>
+              <ThemeToggle />
+
+              <Button variant="gradient">
+                Começar
+              </Button>
             </div>
           </motion.div>
         )}
