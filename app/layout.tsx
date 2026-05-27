@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { Providers } from '@/components/theme-provider'
-import { Loader } from '@/components/loader'
+import { Providers } from '../components/theme-provider'
+import { Loader } from '../components/loader'
 import './globals.css'
 
 const inter = Inter({
