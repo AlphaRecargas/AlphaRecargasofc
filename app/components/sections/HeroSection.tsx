@@ -95,7 +95,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="text-lg md:text-xl text-zinc-300 text-center mb-8 max-w-2xl mx-auto leading-relaxed"
         >
-          Transforme sua loja em um ponto de recargas com sistema rápido, suporte via WhatsApp e{' '}
+          Transforme sua loja em um ponto de recargas com sistema rápido, suporte via WhatsApp e {' '}
           <span className="text-green-400 font-semibold">comissão em cada venda</span>
         </motion.p>
 
