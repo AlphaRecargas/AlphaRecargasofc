@@ -36,10 +36,10 @@ export function PlansSection() {
   ]
 
   return (
-    <section className="py-24 bg-[#0a0e27] relative overflow-hidden">
+    <section className="py-24 bg-[#0a0e27]">
       <div className="max-w-6xl mx-auto px-6">
 
-        {/* TÍTULO COM ANIMAÇÃO */}
+        {/* TÍTULO */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,14 +57,13 @@ export function PlansSection() {
 
         {/* CARDS */}
         <div className="grid md:grid-cols-3 gap-8">
-
           {planos.map((plano, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -5 }}
               viewport={{ once: true }}
               className={`rounded-2xl p-6 border transition-all duration-300 backdrop-blur-xl ${
                 plano.destaque
@@ -73,7 +72,7 @@ export function PlansSection() {
               }`}
             >
 
-              {/* BADGE DE DESTAQUE */}
+              {/* BADGE */}
               {plano.destaque && (
                 <span className="inline-block mb-3 text-xs px-3 py-1 rounded-full bg-green-400/20 text-green-300 border border-green-400/30">
                   MAIS ESCOLHIDO
@@ -94,7 +93,6 @@ export function PlansSection() {
                 ))}
               </ul>
 
-              {/* BOTÃO PADRÃO */}
               <Button
                 variant={plano.destaque ? 'gradient' : 'secondary'}
                 size="lg"
@@ -105,8 +103,8 @@ export function PlansSection() {
 
             </motion.div>
           ))}
-
         </div>
+
       </div>
     </section>
   )
