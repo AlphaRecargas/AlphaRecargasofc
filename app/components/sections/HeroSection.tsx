@@ -96,7 +96,7 @@ export function HeroSection() {
         </motion.p>
 
         {/* CTA Button */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
           <motion.button
             onClick={() => setShowContacts(true)}
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0, 174, 255, 0.8)' }}
