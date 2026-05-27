@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
-  // Função auxiliar para rolar a tela de forma suave até o ID desejado
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -15,10 +14,9 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#0a0e27] overflow-hidden">
-
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-[#0a0e27] to-cyan-900/30" />
 
-      {/* LUZES AMBIENTES */}
+      {/* LUZES */}
       <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl top-[-100px] left-[-100px]" />
       <div className="absolute w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-3xl bottom-[-100px] right-[-100px]" />
 
@@ -30,7 +28,6 @@ export function HeroSection() {
         }}
         className="relative z-10 text-center px-6 max-w-4xl"
       >
-
         <motion.h1
           variants={{
             hidden: { opacity: 0, y: 40 },
@@ -57,36 +54,31 @@ export function HeroSection() {
         <AnimatedCounter />
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-
-          {/* BOTÃO COM BRILHO - LEVA DIRETOR PARA OS PLANOS */}
-          <div className="relative group">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%] pointer-events-none" />
-
+          {/* BOTÃO COM BRILHO OTIMIZADO */}
+          <div className="relative group w-full sm:w-auto">
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%] pointer-events-none" />
             <Button 
               variant="gradient" 
               size="lg" 
-              className="relative z-10 w-full sm:w-auto font-sans font-medium"
+              className="w-full sm:w-auto font-sans font-medium"
               onClick={() => scrollToSection('planos')}
             >
               Começar agora
             </Button>
           </div>
 
-          {/* BOTÃO VEJA COMO FUNCIONA - ROLAGEM SUAVE */}
           <Button 
             variant="outline" 
-            size="lg"
+            size="lg" 
             className="w-full sm:w-auto font-sans font-medium border-white/20 text-white hover:bg-white/5"
             onClick={() => scrollToSection('como-funciona')}
           >
             Ver como funciona
           </Button>
-
         </div>
-
       </motion.div>
 
-      {/* ÍCONE ANIMADO DE SCROLL DO MOUSE */}
+      {/* SCROLL */}
       <motion.div
         onClick={() => scrollToSection('planos')}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer hidden md:block"
@@ -99,7 +91,6 @@ export function HeroSection() {
           />
         </div>
       </motion.div>
-
     </section>
   )
 }
@@ -110,7 +101,6 @@ function AnimatedCounter() {
   React.useEffect(() => {
     let start = 0
     const end = 5000
-
     const interval = setInterval(() => {
       start += 100
       if (start >= end) {
@@ -119,12 +109,11 @@ function AnimatedCounter() {
       }
       setValue(start)
     }, 20)
-
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <p className="text-green-400 text-xl mt-4 font-sans font-medium tracking-wide">
+    <p className="text-green-400 text-xl mt-4 font-sans font-medium">
       + R$ {value.toLocaleString('pt-BR')} faturados
     </p>
   )
