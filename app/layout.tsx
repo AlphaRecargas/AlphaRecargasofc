@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Poppins } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercelanalytics/next'
 
-// Correção aqui: Adicionando as chaves { } para corresponder à exportação correta
-import { Providers } from '../components/theme-provider'
-import { Loader } from '../components/loader'
+// Importação padrão (sem chaves) para evitar o erro de 'undefined'
+import Providers from '../components/theme-provider'
+import Loader from '../components/loader'
 
 import './globals.css'
 
