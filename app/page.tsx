@@ -1,6 +1,8 @@
 'use client'
+
 import { LogoAlpha } from '@/components/logo-alpha'
 import { HeroSection } from './components/sections/HeroSection'
+import { PlansSection } from './components/PlansSection'
 import { BenefitsSection } from './components/sections/BenefitsSection'
 import { HowItWorksSection } from './components/sections/HowItWorksSection'
 import { TrustSection } from './components/sections/TrustSection'
@@ -11,14 +13,23 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp'
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0a0e27] text-white">
+      
+      {/* HERO */}
       <HeroSection />
+
+      {/* PLANOS (NOVO) */}
+      <PlansSection />
+
+      {/* RESTANTE */}
       <BenefitsSection />
       <HowItWorksSection />
       <TrustSection />
       <FAQSection />
       <Footer />
+
+      {/* FLOAT */}
       <FloatingWhatsApp />
+      
     </main>
   )
 }
-
