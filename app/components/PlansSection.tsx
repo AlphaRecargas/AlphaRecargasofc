@@ -10,6 +10,9 @@ export function PlansSection() {
     { nome: 'Premium', destaque: false },
   ]
 
+  // Insira o seu link do WhatsApp aqui (Exemplo: https://wa.me/5511999999999)
+  const LINK_WHATSAPP = "#" 
+
   return (
     <motion.section
       id="planos"
@@ -19,9 +22,10 @@ export function PlansSection() {
       viewport={{ once: true, amount: 0.3 }}
       className="py-24 bg-[#0a0e27]"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      {/* Otimizado o preenchimento lateral de px-6 para px-8 para telas mobiles */}
+      <div className="max-w-6xl mx-auto px-8">
 
-        <h2 className="text-4xl text-white text-center mb-16">
+        <h2 className="text-4xl text-white text-center mb-16 font-sans">
           Escolha seu plano
         </h2>
 
@@ -34,9 +38,9 @@ export function PlansSection() {
                 scale: 1.05,
                 y: -8,
               }}
-              className={`relative overflow-hidden p-6 rounded-2xl border transition-all duration-300 ${
+              className={`relative overflow-hidden p-6 sm:p-8 rounded-2xl border transition-all duration-300 ${
                 plano.destaque
-                  ? 'border-cyan-400 bg-cyan-500/10'
+                  ? 'border-cyan-400 bg-cyan-500/10 shadow-[0_0_25px_rgba(34,211,238,0.15)]'
                   : 'border-white/10 bg-white/5'
               }`}
             >
@@ -44,16 +48,18 @@ export function PlansSection() {
               {/* glow hover */}
               <div className="absolute inset-0 opacity-0 hover:opacity-100 transition bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-              <h3 className="text-white text-2xl mb-4">
+              <h3 className="text-white text-2xl mb-4 font-sans font-semibold">
                 {plano.nome}
               </h3>
 
-              <Button
-                variant={plano.destaque ? 'default' : 'secondary'}
-                className="w-full mt-6"
-              >
-                Começar agora
-              </Button>
+              <a href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer" className="block w-full mt-6">
+                <Button
+                  variant={plano.destaque ? 'default' : 'secondary'}
+                  className="w-full font-sans font-medium hover:scale-[1.02] transition-transform"
+                >
+                  Começar agora
+                </Button>
+              </a>
 
             </motion.div>
           ))}
