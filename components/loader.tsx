@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export function Loader({ children }: { children: React.ReactNode }) {
+// Alterado aqui para "export default function" para casar com o layout
+export default function Loader({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -50,3 +51,4 @@ export function Loader({ children }: { children: React.ReactNode }) {
     </AnimatePresence>
   )
 }
+
