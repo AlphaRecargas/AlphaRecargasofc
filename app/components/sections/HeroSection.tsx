@@ -5,12 +5,20 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
+  // Função auxiliar para rolar a tela de forma suave até o ID desejado
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#0a0e27] overflow-hidden">
 
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-[#0a0e27] to-cyan-900/30" />
 
-      {/* LUZES */}
+      {/* LUZES AMBIENTES */}
       <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl top-[-100px] left-[-100px]" />
       <div className="absolute w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-3xl bottom-[-100px] right-[-100px]" />
 
@@ -28,7 +36,7 @@ export function HeroSection() {
             hidden: { opacity: 0, y: 40 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="text-4xl md:text-6xl font-bold text-white mb-6"
+          className="text-4xl md:text-6xl font-bold text-white mb-6 font-sans"
         >
           Ganhe dinheiro com{' '}
           <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -41,7 +49,7 @@ export function HeroSection() {
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0 },
           }}
-          className="text-zinc-400 text-lg mb-6"
+          className="text-zinc-400 text-lg mb-6 font-sans"
         >
           Plataforma simples, rápida e lucrativa
         </motion.p>
@@ -50,16 +58,27 @@ export function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
 
-          {/* BOTÃO COM BRILHO */}
+          {/* BOTÃO COM BRILHO - LEVA DIRETOR PARA OS PLANOS */}
           <div className="relative group">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%]" />
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%] pointer-events-none" />
 
-            <Button variant="gradient" size="lg" className="relative z-10">
+            <Button 
+              variant="gradient" 
+              size="lg" 
+              className="relative z-10 w-full sm:w-auto font-sans font-medium"
+              onClick={() => scrollToSection('planos')}
+            >
               Começar agora
             </Button>
           </div>
 
-          <Button variant="outline" size="lg">
+          {/* BOTÃO VEJA COMO FUNCIONA - ROLAGEM SUAVE */}
+          <Button 
+            variant="outline" 
+            size="lg"
+            className="w-full sm:w-auto font-sans font-medium border-white/20 text-white hover:bg-white/5"
+            onClick={() => scrollToSection('como-funciona')}
+          >
             Ver como funciona
           </Button>
 
@@ -67,12 +86,10 @@ export function HeroSection() {
 
       </motion.div>
 
-      {/* SCROLL */}
+      {/* ÍCONE ANIMADO DE SCROLL DO MOUSE */}
       <motion.div
-        onClick={() =>
-          window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
-        }
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
+        onClick={() => scrollToSection('planos')}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer hidden md:block"
       >
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
           <motion.div
@@ -107,8 +124,9 @@ function AnimatedCounter() {
   }, [])
 
   return (
-    <p className="text-green-400 text-xl mt-4">
-      + R$ {value.toLocaleString()} faturados
+    <p className="text-green-400 text-xl mt-4 font-sans font-medium tracking-wide">
+      + R$ {value.toLocaleString('pt-BR')} faturados
     </p>
   )
 }
+
