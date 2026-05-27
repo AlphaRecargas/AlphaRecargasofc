@@ -67,7 +67,7 @@ export function Footer() {
 
           {/* Hours */}
           <div className="text-center md:text-right">
-            <p className="text-sm text-zinc-400 mb-1">Horario de atendimento</p>
+            <p className="text-sm text-zinc-400 mb-1">Horário de atendimento</p>
             <p className="text-sm font-semibold text-white">24 horas por dia</p>
             <p className="text-xs text-zinc-500">Todos os dias</p>
           </div>
