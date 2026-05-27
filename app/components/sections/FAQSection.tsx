@@ -6,18 +6,15 @@ import { useState } from 'react'
 const faqs = [
   {
     question: 'Como funciona a parceria?',
-    answer:
-      'Você entra em contato conosco, recebe acesso ao sistema e começa a vender recargas.',
+    answer: 'Você entra em contato conosco, recebe acesso ao sistema e começa a vender recargas.',
   },
   {
     question: 'Preciso pagar mensalidade?',
-    answer:
-      'Não existe mensalidade ou taxa de entrada.',
+    answer: 'Não existe mensalidade ou taxa de entrada.',
   },
   {
     question: 'Como recebo minha comissão?',
-    answer:
-      'Seu lucro é calculado automaticamente em cada venda.',
+    answer: 'Seu lucro é calculado automaticamente em cada venda.',
   },
 ]
 
@@ -34,19 +31,16 @@ export function FAQSection() {
       className="py-24 bg-[#0a0e27]"
     >
       <div className="max-w-4xl mx-auto px-6">
-
         <h2 className="text-4xl text-white text-center mb-12 font-sans">
           Perguntas frequentes
         </h2>
 
         <div className="space-y-4">
-
           {faqs.map((faq, i) => (
             <div
               key={i}
               className="border border-white/10 rounded-xl overflow-hidden bg-white/[0.01]"
             >
-
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full text-left p-5 text-white flex justify-between items-center font-sans font-medium hover:bg-white/[0.02] transition-colors"
@@ -57,25 +51,23 @@ export function FAQSection() {
                 </span>
               </button>
 
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {open === i && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    {/* Atualizado para text-zinc-200 para melhor contraste e leitura em telas mobile */}
                     <div className="px-5 pb-5 text-zinc-200 font-sans text-base leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-
             </div>
           ))}
-
         </div>
       </div>
     </motion.section>
