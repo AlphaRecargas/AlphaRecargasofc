@@ -49,7 +49,7 @@ export function PlansSection() {
     },
   ]
 
-  // Substitua pela URL final do seu WhatsApp de atendimento
+  // Altere para a URL correta do WhatsApp da Alpha Recargas
   const LINK_WHATSAPP = "https://wa.me/seu-numero-aqui" 
 
   return (
@@ -61,11 +61,11 @@ export function PlansSection() {
       viewport={{ once: true, amount: 0.2 }}
       className="py-24 bg-[#0a0e27]"
     >
-      <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <h2 className="text-4xl text-white text-center mb-4 font-sans font-bold">
           Cresça com a Alpha Recargas
         </h2>
-        <p className="text-center text-zinc-400 mb-16 max-w-md mx-auto font-sans">
+        <p className="text-center text-zinc-400 mb-16 max-w-md mx-auto font-sans text-sm md:text-base">
           Aumente o seu volume mensal de vendas, suba de nível e garanta prêmios e taxas de lucros maiores.
         </p>
 
@@ -74,7 +74,7 @@ export function PlansSection() {
             <motion.div
               key={index}
               whileHover={{
-                scale: nivel.destaque ? 1.05 : 1.02,
+                scale: nivel.destaque ? 1.04 : 1.02,
                 y: -4,
               }}
               className={`relative overflow-hidden p-6 sm:p-8 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
@@ -85,8 +85,8 @@ export function PlansSection() {
             >
               <div className="absolute inset-0 opacity-0 hover:opacity-100 transition bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
 
-              <div>
-                <span className={`text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full inline-block mb-4 ${
+              <div className="flex-grow">
+                <span className={`text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full inline-block mb-4 ${
                   nivel.destaque ? 'bg-cyan-400 text-black' : 'bg-cyan-400/10 text-cyan-400'
                 }`}>
                   {nivel.badge}
@@ -97,16 +97,16 @@ export function PlansSection() {
                 </h3>
 
                 <div className="flex flex-col text-white mb-6 bg-white/[0.02] p-4 rounded-xl border border-white/5">
-                  <span className="text-xs text-zinc-400 font-sans uppercase tracking-wider">Meta do Nível</span>
-                  <div className="flex items-baseline gap-1 mt-1">
-                    <span className="text-4xl font-extrabold tracking-tight text-cyan-400">{nivel.meta}</span>
-                    <span className="text-sm text-zinc-300 font-sans">{nivel.subtitulo}</span>
+                  <span className="text-[10px] text-zinc-400 font-sans uppercase tracking-wider font-semibold">Meta do Nível</span>
+                  <div className="flex items-baseline gap-1 mt-1 flex-wrap">
+                    <span className="text-3xl md:text-4xl font-extrabold tracking-tight text-cyan-400">{nivel.meta}</span>
+                    <span className="text-xs text-zinc-300 font-sans">{nivel.subtitulo}</span>
                   </div>
                 </div>
                 
                 <ul className="space-y-3 mb-8">
                   {nivel.beneficios.map((beneficio, bIndex) => (
-                    <li key={bIndex} className="text-zinc-300 font-sans text-sm flex items-start gap-2">
+                    <li key={bIndex} className="text-zinc-300 font-sans text-xs md:text-sm flex items-start gap-2">
                       <span className="text-cyan-400 text-xs shrink-0 mt-0.5">✓</span>
                       <span className="leading-tight">{beneficio}</span>
                     </li>
@@ -117,7 +117,7 @@ export function PlansSection() {
               <div className="mt-auto pt-4">
                 <Button
                   variant={nivel.destaque ? 'default' : 'secondary'}
-                  className="w-full font-sans font-semibold transition-all"
+                  className="w-full font-sans font-semibold transition-all hover:brightness-110"
                   onClick={() => window.open(LINK_WHATSAPP, '_blank', 'noopener,noreferrer')}
                 >
                   Fazer parte desse nível
