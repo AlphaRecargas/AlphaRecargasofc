@@ -8,7 +8,7 @@ export function HeroSection() {
   const scrollToSection = (id: string) => {
     let element = document.getElementById(id)
     
-    // Fallback inteligente caso o ID não tenha sido mapeado exatamente igual nas outras secções
+    // Fallback inteligente caso os IDs das outras seções tenham sido nomeados diferentes
     if (!element && id === 'como-funciona') {
       element = document.getElementById('beneficios') || document.getElementById('planos')
     }
@@ -60,13 +60,11 @@ export function HeroSection() {
         <AnimatedCounter />
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          {/* BOTÃO PRINCIPAL COM EFEITO DE BRILHO PASSIVO */}
+          {/* BOTÃO COM GRADIENTE E BRILHO VIA TAILWIND */}
           <div className="relative group w-full sm:w-auto">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%] pointer-events-none" />
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%] pointer-events-none" />
             <Button 
-              variant="gradient" 
-              size="lg" 
-              className="w-full sm:w-auto font-sans font-medium transition-all transform hover:scale-[1.02]"
+              className="w-full sm:w-auto font-sans font-medium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 transition-all transform hover:scale-[1.02] size-lg h-11 px-8 rounded-md"
               onClick={() => scrollToSection('planos')}
             >
               Começar agora
