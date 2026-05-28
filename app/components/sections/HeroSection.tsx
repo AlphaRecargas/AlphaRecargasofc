@@ -6,7 +6,13 @@ import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
+    let element = document.getElementById(id)
+    
+    // Se o ID específico não for encontrado, procura uma alternativa para não quebrar o clique
+    if (!element && id === 'como-funciona') {
+      element = document.getElementById('beneficios') || document.getElementById('planos')
+    }
+
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
@@ -81,9 +87,9 @@ export function HeroSection() {
       {/* ÍCONE DE SCROLL */}
       <motion.div
         onClick={() => scrollToSection('planos')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer hidden md:block"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer hidden md:block z-20"
       >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 hover:border-cyan-400 transition-colors">
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.2, repeat: Infinity }}
@@ -123,5 +129,5 @@ function AnimatedCounter() {
       + R$ {value.toLocaleString('pt-BR')} faturados
     </p>
   )
-}
+  }
 
