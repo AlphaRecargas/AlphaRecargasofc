@@ -25,7 +25,6 @@ export function PlansSection() {
     },
   ]
 
-  // Altere para o link definitivo do seu WhatsApp de Vendas
   const LINK_WHATSAPP = "https://wa.me/seu-numero-aqui" 
 
   return (
@@ -45,24 +44,26 @@ export function PlansSection() {
           Selecione a melhor opção para começar a faturar hoje mesmo.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
           {planos.map((plano, index) => (
             <motion.div
               key={index}
               whileHover={{
-                scale: 1.03,
+                scale: plano.destaque ? 1.07 : 1.03,
                 y: -6,
               }}
               className={`relative overflow-hidden p-6 sm:p-8 rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
                 plano.destaque
-                  ? 'border-cyan-400 bg-cyan-500/10 shadow-[0_0_30px_rgba(34,211,238,0.15)] md:scale-105'
-                  : 'border-white/10 bg-white/5'
+                  ? 'border-cyan-400 bg-cyan-500/10 shadow-[0_0_30px_rgba(34,211,238,0.2)] md:scale-105 z-10'
+                  : 'border-white/10 bg-white/5 opacity-90'
               }`}
             >
               <div className="absolute inset-0 opacity-0 hover:opacity-100 transition bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none" />
 
               <div>
-                <span className="text-xs font-bold text-cyan-400 tracking-wider uppercase bg-cyan-400/10 px-3 py-1 rounded-full inline-block mb-4">
+                <span className={`text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full inline-block mb-4 ${
+                  plano.destaque ? 'bg-cyan-400 text-black' : 'bg-cyan-400/10 text-cyan-400'
+                }`}>
                   {plano.preco}
                 </span>
                 <h3 className="text-white text-2xl font-sans font-bold mb-6">
@@ -82,7 +83,7 @@ export function PlansSection() {
               <div className="mt-auto">
                 <Button
                   variant={plano.destaque ? 'default' : 'secondary'}
-                  className="w-full font-sans font-semibold transition-all hover:scale-[1.01]"
+                  className="w-full font-sans font-semibold transition-all"
                   onClick={() => window.open(LINK_WHATSAPP, '_blank', 'noopener,noreferrer')}
                 >
                   Começar agora
