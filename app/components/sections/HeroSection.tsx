@@ -8,7 +8,7 @@ export function HeroSection() {
   const scrollToSection = (id: string) => {
     let element = document.getElementById(id)
     
-    // Se o ID específico não for encontrado, procura uma alternativa para não quebrar o clique
+    // Fallback inteligente caso o ID não tenha sido mapeado exatamente igual nas outras secções
     if (!element && id === 'como-funciona') {
       element = document.getElementById('beneficios') || document.getElementById('planos')
     }
@@ -22,21 +22,21 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center bg-[#0a0e27] overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-[#0a0e27] to-cyan-900/30" />
 
-      {/* LUZES DE FUNDO */}
-      <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl top-[-100px] left-[-100px]" />
-      <div className="absolute w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-3xl bottom-[-100px] right-[-100px]" />
+      {/* LUZES AMBIENTES */}
+      <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl top-[-100px] left-[-100px] pointer-events-none" />
+      <div className="absolute w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-3xl bottom-[-100px] right-[-100px] pointer-events-none" />
 
       <motion.div
         initial="hidden"
         animate="visible"
         variants={{
-          visible: { transition: { staggerChildren: 0.2 } },
+          visible: { transition: { staggerChildren: 0.15 } },
         }}
         className="relative z-10 text-center px-6 max-w-4xl"
       >
         <motion.h1
           variants={{
-            hidden: { opacity: 0, y: 40 },
+            hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0 },
           }}
           className="text-4xl md:text-6xl font-bold text-white mb-6 font-sans leading-tight"
@@ -49,20 +49,20 @@ export function HeroSection() {
 
         <motion.p
           variants={{
-            hidden: { opacity: 0, y: 30 },
+            hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0 },
           }}
           className="text-zinc-400 text-lg md:text-xl mb-6 font-sans max-w-2xl mx-auto"
         >
-          Plataforma simples, rápida e altamente lucrativa para o seu negócio.
+          Plataforma simples, rápida e altamente lucrativa para o seu negócio expandir.
         </motion.p>
 
         <AnimatedCounter />
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          {/* BOTÃO PRINCIPAL COM BRILHO */}
+          {/* BOTÃO PRINCIPAL COM EFEITO DE BRILHO PASSIVO */}
           <div className="relative group w-full sm:w-auto">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%] pointer-events-none" />
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%] pointer-events-none" />
             <Button 
               variant="gradient" 
               size="lg" 
@@ -84,7 +84,7 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      {/* ÍCONE DE SCROLL */}
+      {/* ROLAGEM MOUSE */}
       <motion.div
         onClick={() => scrollToSection('planos')}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer hidden md:block z-20"
@@ -107,8 +107,8 @@ function AnimatedCounter() {
   React.useEffect(() => {
     let start = 0
     const end = 5000
-    const duration = 1500
-    const stepTime = 30
+    const duration = 1200 
+    const stepTime = 25
     const steps = duration / stepTime
     const increment = end / steps
 
@@ -125,9 +125,8 @@ function AnimatedCounter() {
   }, [])
 
   return (
-    <p className="text-green-400 text-xl md:text-2xl mt-4 font-sans font-semibold tracking-wide bg-green-500/5 border border-green-500/10 px-4 py-2 rounded-full inline-block">
-      + R$ {value.toLocaleString('pt-BR')} faturados
+    <p className="text-green-400 text-sm md:text-base mt-4 font-sans font-semibold tracking-wide bg-green-500/5 border border-green-500/10 px-4 py-2 rounded-full inline-block select-none">
+      + R$ {value.toLocaleString('pt-BR')} faturados hoje
     </p>
   )
-  }
-
+}
