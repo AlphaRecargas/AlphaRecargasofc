@@ -31,7 +31,10 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section className="relative py-16 md:py-24 px-6 bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden">
+    <section 
+      id="como-funciona" 
+      className="relative py-16 md:py-24 px-6 bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden scroll-mt-20"
+    >
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -116,3 +119,4 @@ export function HowItWorksSection() {
     </section>
   )
 }
+      
