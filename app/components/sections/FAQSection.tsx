@@ -1,7 +1,7 @@
 'use client'
 
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
 
 const faqs = [
   {
@@ -16,20 +16,21 @@ const faqs = [
     question: 'Como recebo minha comissão?',
     answer: 'Seu lucro é calculado e adicionado de forma automatizada e transparente no momento exato de cada venda realizada.',
   },
+  {
+    question: 'Quais operadoras e serviços estão disponíveis no aplicativo?',
+    answer: 'O sistema conta com todas as principais operadoras de telefonia do Brasil (Vivo, Tim, Claro).',
+  },
+  {
+    question: 'O saldo adicionado expira se eu não vender no mesmo mês?',
+    answer: 'Não! O saldo adicionado via PIX não possui prazo de validade, dando total liberdade para você vender no ritmo do seu estabelecimento comercial.',
+  }
 ]
 
 export function FAQSection() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <motion.section
-      id="faq"
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true, amount: 0.3 }}
-      className="py-24 bg-[#0a0e27]"
-    >
+    <section id="faq" className="py-24 bg-[#0a0e27] scroll-mt-16 relative z-20">
       <div className="max-w-4xl mx-auto px-6">
         <h2 className="text-4xl text-white text-center mb-12 font-sans font-bold">
           Perguntas frequentes
@@ -45,7 +46,7 @@ export function FAQSection() {
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full text-left p-5 text-white flex justify-between items-center font-sans font-medium hover:bg-white/[0.02] transition-colors cursor-pointer select-none"
               >
-                <span className="pr-4">{faq.question}</span>
+                <span className="pr-4 text-sm md:text-base">{faq.question}</span>
                 <span className={`text-cyan-400 transition-transform duration-300 text-xs shrink-0 ${open === i ? 'rotate-180' : ''}`}>
                   ▼
                 </span>
@@ -60,7 +61,7 @@ export function FAQSection() {
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 pb-5 text-zinc-300 font-sans text-base leading-relaxed border-t border-white/[0.03] pt-3">
+                    <div className="px-5 pb-5 text-zinc-300 font-sans text-xs md:text-sm leading-relaxed border-t border-white/[0.03] pt-3 bg-black/10">
                       {faq.answer}
                     </div>
                   </motion.div>
@@ -70,7 +71,7 @@ export function FAQSection() {
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   )
 }
 
