@@ -11,7 +11,7 @@ export function PlansSection() {
       subtitulo: 'recargas no mês',
       badge: 'Nível 1',
       beneficios: [
-        'Acesso completo ao Site e App',
+        'Acesso completo ao site e app',
         'Suporte especializado 24h',
         'Taxa de lucro padrão'
       ],
@@ -23,9 +23,9 @@ export function PlansSection() {
       subtitulo: 'recargas no mês',
       badge: 'Nível 2 • Recomendado',
       beneficios: [
-        'Acesso completo ao Site e App',
+        'Acesso completo ao site e app',
         'Suporte especializado 24h',
-        'Cartaz personalizado com a logo Alpha',
+        'Cartaz personalizado com a logo da Alpha',
         'Brindes exclusivos para dar aos clientes',
         'Taxa de lucro aumentada 📈'
       ],
@@ -37,9 +37,9 @@ export function PlansSection() {
       subtitulo: 'recargas no mês',
       badge: 'Nível Máximo',
       beneficios: [
-        'Acesso completo ao Site e App',
+        'Acesso completo ao site e app',
         'Suporte especializado 24h',
-        'Cartaz personalizado com a logo Alpha',
+        'Cartaz personalizado com a logo da Alpha',
         'Brindes exclusivos para dar aos clientes',
         'Brindes especiais de conquista para o colaborador 🎁',
         'Divulgação da sua loja nas redes oficiais Alpha',
@@ -63,7 +63,7 @@ export function PlansSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-            Cresça com a{' '}
+            <span>Cresça com a </span>
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               Alpha Recargas
             </span>
@@ -98,7 +98,7 @@ export function PlansSection() {
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 font-sans">{nivel.nome}</h3>
                 
                 <div className="mb-6 p-4 rounded-xl bg-black/20 border border-white/[0.03]">
-                  <span className="text-[10px] text-zinc-400 font-sans uppercase tracking-wider font-semibold">Meta do Nível</span>
+                  <span className="text-[10px] text-zinc-400 font-sans uppercase tracking-wider font-semibold">Meta do nível</span>
                   <div className="flex items-baseline gap-1 mt-1 flex-wrap">
                     <span className="text-3xl md:text-4xl font-extrabold tracking-tight text-cyan-400">{nivel.meta}</span>
                     <span className="text-xs text-zinc-300 font-sans">{nivel.subtitulo}</span>
@@ -121,7 +121,7 @@ export function PlansSection() {
                   className="w-full font-sans font-semibold transition-all hover:brightness-110"
                   onClick={() => window.open(LINK_WHATSAPP, '_blank', 'noopener,noreferrer')}
                 >
-                  Fazer parte desse nível
+                  Fazer parte deste nível
                 </Button>
               </div>
             </motion.div>
