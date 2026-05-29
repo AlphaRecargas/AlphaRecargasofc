@@ -21,13 +21,13 @@ export function HeroSection() {
     <section className="relative h-auto pt-32 pb-12 md:pt-40 md:pb-16 flex flex-col items-center justify-center bg-[#0a0e27] overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-[#0a0e27] to-cyan-900/30" />
 
-      {/* LUZES AMBIENTES */}
       <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl top-[-100px] left-[-100px] pointer-events-none" />
       <div className="absolute w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-3xl bottom-[-100px] right-[-100px] pointer-events-none" />
 
       <motion.div
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
         className="relative z-10 text-center max-w-4xl px-6 flex flex-col items-center"
       >
         <span className="px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mb-6 backdrop-blur-sm tracking-wide uppercase">
@@ -45,7 +45,6 @@ export function HeroSection() {
           Transforme o seu comércio num ponto de recargas oficial. Atendimento rápido, comissões instantâneas e suporte 24/7.
         </p>
 
-        {/* CONTADOR DE PARCEIROS */}
         <div className="mb-8 p-4 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
           <AnimatedCounter />
         </div>
@@ -57,7 +56,7 @@ export function HeroSection() {
             className="w-full sm:w-auto text-base font-bold px-8 py-6 rounded-xl shadow-[0_0_30px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-300"
             onClick={() => scrollToSection('planos')}
           >
-            Seja um Parceiro
+            Seja um Partner
           </Button>
           <Button
             size="lg"
@@ -70,7 +69,6 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      {/* ROLAGEM MOUSE */}
       <motion.div
         onClick={() => scrollToSection('planos')}
         className="absolute bottom-4 left-1/2 -translate-x-1/2 cursor-pointer hidden md:block z-20"
