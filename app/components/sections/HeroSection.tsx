@@ -6,14 +6,19 @@ import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
+    let element = document.getElementById(id)
+    
+    if (!element && id === 'como-funciona') {
+      element = document.getElementById('beneficios') || document.getElementById('planos')
+    }
+
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center justify-center bg-[#0a0e27] overflow-hidden pt-16">
+    <section className="relative h-auto pt-32 pb-12 md:pt-40 md:pb-16 flex flex-col items-center justify-center bg-[#0a0e27] overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-[#0a0e27] to-cyan-900/30" />
 
       {/* LUZES AMBIENTES */}
@@ -23,44 +28,59 @@ export function HeroSection() {
       <motion.div
         initial="hidden"
         animate="visible"
-        variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-        className="relative z-10 text-center px-6 max-w-4xl"
+        className="relative z-10 text-center max-w-4xl px-6 flex flex-col items-center"
       >
-        <motion.h1
-          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-          className="text-4xl md:text-6xl font-bold text-white mb-6 font-sans leading-tight"
-        >
-          Ganhe dinheiro com{' '}
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            recargas
+        <span className="px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mb-6 backdrop-blur-sm tracking-wide uppercase">
+          Plataforma de Recargas Premium
+        </span>
+
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
+          Sua Loja Lucrando com{' '}
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent">
+            Recargas Celulares
           </span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-          className="text-zinc-400 text-lg md:text-xl mb-6 font-sans max-w-2xl mx-auto"
-        >
-          Plataforma simples, rápida e altamente lucrative para o seu negócio expandir.
-        </motion.p>
+        <p className="text-zinc-400 text-base md:text-xl max-w-2xl mb-10 font-sans leading-relaxed">
+          Transforme o seu comércio num ponto de recargas oficial. Atendimento rápido, comissões instantâneas e suporte 24/7.
+        </p>
 
-        <AnimatedCounter />
+        {/* CONTADOR DE PARCEIROS */}
+        <div className="mb-8 p-4 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+          <AnimatedCounter />
+        </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <Button 
-            className="w-full sm:w-auto font-sans font-medium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 transition-all transform hover:scale-[1.02] h-11 px-8 rounded-md cursor-pointer"
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto z-30">
+          <Button
+            size="lg"
+            variant="gradient"
+            className="w-full sm:w-auto text-base font-bold px-8 py-6 rounded-xl shadow-[0_0_30px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-300"
             onClick={() => scrollToSection('planos')}
           >
-            Começar agora
+            Seja um Parceiro
           </Button>
-
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="w-full sm:w-auto font-sans font-medium border-white/20 text-white hover:bg-white/5 transition-colors cursor-pointer"
+          <Button
+            size="lg"
+            variant="outline"
+            className="w-full sm:w-auto text-base font-semibold px-8 py-6 rounded-xl border-white/10 hover:bg-white/5 text-white hover:text-white transition-all duration-300 cursor-pointer"
             onClick={() => scrollToSection('como-funciona')}
           >
             Ver como funciona
           </Button>
+        </div>
+      </motion.div>
+
+      {/* ROLAGEM MOUSE */}
+      <motion.div
+        onClick={() => scrollToSection('planos')}
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 cursor-pointer hidden md:block z-20"
+      >
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 hover:border-cyan-400 transition-colors">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.2, repeat: Infinity }}
+            className="w-1 h-2 bg-white/60 rounded-full"
+          />
         </div>
       </motion.div>
     </section>
@@ -91,8 +111,9 @@ function AnimatedCounter() {
   }, [])
 
   return (
-    <p className="text-green-400 text-sm md:text-base mt-4 font-sans font-semibold tracking-wide bg-green-500/5 border border-green-500/10 px-4 py-2 rounded-full inline-block select-none">
-      + R$ {value.toLocaleString('pt-BR')} faturados esse mês
+    <p className="text-green-400 font-bold tracking-wide text-sm md:text-base flex items-center gap-2">
+      <span className="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+      Mais de <span className="text-white text-lg font-black">{value.toLocaleString()}+</span> recargas processadas este mês!
     </p>
   )
 }
