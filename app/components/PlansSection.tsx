@@ -1,20 +1,20 @@
 'use client'
 
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 
 export function PlansSection() {
-  const [showModal, setShowModal] = useState(false)
-  const [selectedLevel, setSelectedLevel] = useState('')
-
   const niveis = [
     { 
       nome: 'Iniciante', 
       meta: '0 a 50',
       subtitulo: 'recargas no mês',
       badge: 'Nível 1',
-      beneficios: ['Acesso completo ao Site e App', 'Suporte especializado 24h', 'Taxa de lucro padrão'],
+      beneficios: [
+        'Acesso completo ao Site e App',
+        'Suporte especializado 24h',
+        'Taxa de lucro padrão'
+      ],
       destaque: false 
     },
     { 
@@ -22,7 +22,13 @@ export function PlansSection() {
       meta: '51 a 100',
       subtitulo: 'recargas no mês',
       badge: 'Nível 2 • Recomendado',
-      beneficios: ['Acesso completo ao Site e App', 'Suporte especializado 24h', 'Cartaz personalizado com a logo Alpha', 'Brindes exclusivos para dar aos clientes', 'Taxa de lucro aumentada 📈'],
+      beneficios: [
+        'Acesso completo ao Site e App',
+        'Suporte especializado 24h',
+        'Cartaz personalizado com a logo Alpha',
+        'Brindes exclusivos para dar aos clientes',
+        'Taxa de lucro aumentada 📈'
+      ],
       destaque: true 
     },
     { 
@@ -30,40 +36,75 @@ export function PlansSection() {
       meta: '100+',
       subtitulo: 'recargas no mês',
       badge: 'Nível Máximo',
-      beneficios: ['Acesso completo ao Site e App', 'Suporte especializado 24h', 'Cartaz personalizado com a logo Alpha', 'Brindes exclusivos para dar aos clientes', 'Brindes especiais de conquista para o colaborador 🎁', 'Divulgação da sua loja nas redes sociais da Alpha ⭐', 'Taxa MÁXIMA de lucro de parceiro 🚀'],
+      beneficios: [
+        'Acesso completo ao Site e App',
+        'Suporte especializado 24h',
+        'Cartaz personalizado com a logo Alpha',
+        'Brindes exclusivos para dar aos clientes',
+        'Brindes especiais de conquista para o colaborador 🎁',
+        'Divulgação da sua loja nas redes oficiais Alpha',
+        'Melhor taxa de lucro do mercado 💎'
+      ],
       destaque: false 
-    },
+    }
   ]
 
-  const openContact = (nivel: string) => {
-    setSelectedLevel(nivel)
-    setShowModal(true)
-  }
+  const LINK_WHATSAPP = "https://wa.me/5511987901884?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+os+n%C3%ADveis+da+Alpha+Recargas."
 
   return (
-    <section id="planos" className="py-24 bg-[#0a0e27] relative scroll-mt-16">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <h2 className="text-4xl text-white text-center mb-4 font-sans font-bold">Cresça com a Alpha Recargas</h2>
-        <p className="text-center text-zinc-400 mb-16 max-w-md mx-auto font-sans text-sm">Aumente o seu volume mensal de vendas, suba de nível e garanta prêmios e taxas de lucros maiores.</p>
+    <motion.section
+      id="planos"
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.15 }}
+      className="relative pt-12 pb-24 px-6 bg-[#0a0e27]"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
+            Cresça com a{' '}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Alpha Recargas
+            </span>
+          </h2>
+          <p className="text-zinc-400 font-sans max-w-xl mx-auto text-sm md:text-base">
+            Suba de nível conforme suas vendas aumentam e garanta comissões maiores, brindes exclusivos e ferramentas de marketing gratuitas.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8 items-stretch pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {niveis.map((nivel, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`relative overflow-hidden p-6 sm:p-8 rounded-2xl border flex flex-col justify-between transition-all duration-300 ${
-                nivel.destaque ? 'border-cyan-400 bg-cyan-500/10 shadow-[0_0_40px_rgba(34,211,238,0.15)] md:scale-105 z-10' : 'border-white/10 bg-white/5'
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              className={`relative flex flex-col justify-between p-6 md:p-8 rounded-2xl border transition-all duration-300 ${
+                nivel.destaque
+                  ? 'bg-gradient-to-b from-blue-950/40 via-cyan-950/20 to-[#0a0e27] border-cyan-500 shadow-[0_0_30px_rgba(6,182,212,0.15)] md:scale-105 z-10'
+                  : 'bg-white/[0.02] border-white/10 hover:border-white/20'
               }`}
             >
-              <div className="flex-grow">
-                <span className={`text-[11px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full inline-block mb-4 ${nivel.destaque ? 'bg-cyan-400 text-black' : 'bg-cyan-400/10 text-cyan-400'}`}>{nivel.badge}</span>
-                <h3 className="text-white text-2xl font-sans font-bold mb-2">{nivel.nome}</h3>
-                <div className="flex flex-col text-white mb-6 bg-white/[0.02] p-4 rounded-xl border border-white/5">
+              <div>
+                <div className="flex justify-between items-center mb-6">
+                  <span className={`text-xs font-sans font-bold tracking-wider uppercase px-3 py-1 rounded-full ${
+                    nivel.destaque 
+                      ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' 
+                      : 'bg-white/5 text-zinc-400 border border-white/5'
+                  }`}>
+                    {nivel.badge}
+                  </span>
+                </div>
+
+                <h3 className="text-xl md:text-2xl font-black text-white mb-4 font-sans">{nivel.nome}</h3>
+                
+                <div className="mb-6 p-4 rounded-xl bg-black/20 border border-white/[0.03]">
                   <span className="text-[10px] text-zinc-400 font-sans uppercase tracking-wider font-semibold">Meta do Nível</span>
                   <div className="flex items-baseline gap-1 mt-1 flex-wrap">
                     <span className="text-3xl md:text-4xl font-extrabold tracking-tight text-cyan-400">{nivel.meta}</span>
                     <span className="text-xs text-zinc-300 font-sans">{nivel.subtitulo}</span>
                   </div>
                 </div>
+                
                 <ul className="space-y-3 mb-8">
                   {nivel.beneficios.map((beneficio, bIndex) => (
                     <li key={bIndex} className="text-zinc-300 font-sans text-xs md:text-sm flex items-start gap-2">
@@ -73,55 +114,20 @@ export function PlansSection() {
                   ))}
                 </ul>
               </div>
+
               <div className="mt-auto pt-4">
                 <Button
                   variant={nivel.destaque ? 'default' : 'secondary'}
-                  className="w-full font-sans font-semibold transition-all hover:brightness-110 cursor-pointer"
-                  onClick={() => openContact(nivel.nome)}
+                  className="w-full font-sans font-semibold transition-all hover:brightness-110"
+                  onClick={() => window.open(LINK_WHATSAPP, '_blank', 'noopener,noreferrer')}
                 >
-                  Fazer parte da equipe
+                  Fazer parte desse nível
                 </Button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-
-      {/* WHATSAPP MODAL PARA ESCOLHA DE PLANO */}
-      <AnimatePresence>
-        {showModal && (
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setShowModal(false)} />
-            <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="bg-[#111636] border border-cyan-500/20 rounded-2xl w-full max-w-sm p-6 relative z-10 shadow-2xl">
-              <h3 className="text-lg font-bold text-white font-sans text-center mb-1">Entrar como {selectedLevel}</h3>
-              <p className="text-zinc-400 text-xs font-sans text-center mb-6">Selecione o atendente disponível para configurar sua comissão:</p>
-              
-              <div className="space-y-3">
-                <a 
-                  href={`https://wa.me/5511966061655?text=${encodeURIComponent(`Olá Robson! Quero fazer parte da equipe e ativar meu plano no nível: ${selectedLevel}`)}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center justify-between bg-white/5 hover:bg-cyan-500/10 p-4 rounded-xl border border-white/5 transition-all"
-                >
-                  <div className="font-sans text-left"><p className="text-white text-sm font-semibold">Atendimento com Robson</p><p className="text-zinc-400 text-xs">Ativação de Conta imediata</p></div>
-                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                </a>
-                
-                <a 
-                  href={`https://wa.me/5511987901884?text=${encodeURIComponent(`Olá Vinicius! Quero fazer parte da equipe e ativar meu plano no nível: ${selectedLevel}`)}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center justify-between bg-white/5 hover:bg-blue-500/10 p-4 rounded-xl border border-white/5 transition-all"
-                >
-                  <div className="font-sans text-left"><p className="text-white text-sm font-semibold">Atendimento com Vinicius</p><p className="text-zinc-400 text-xs">Suporte Comercial</p></div>
-                  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-    </section>
+    </motion.section>
   )
 }
-
