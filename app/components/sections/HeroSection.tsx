@@ -31,13 +31,13 @@ export function HeroSection() {
         className="relative z-10 text-center max-w-4xl px-6 flex flex-col items-center"
       >
         <span className="px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 mb-6 backdrop-blur-sm tracking-wide uppercase">
-          Plataforma de Recargas Premium
+          Plataforma de recargas premium
         </span>
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-white mb-6 leading-tight">
-          Sua Loja Lucrando com{' '}
+          <span>Sua loja lucrando com </span>
           <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent">
-            Recargas Celulares
+            recargas celulares
           </span>
         </h1>
 
@@ -56,7 +56,7 @@ export function HeroSection() {
             className="w-full sm:w-auto text-base font-bold px-8 py-6 rounded-xl shadow-[0_0_30px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-300"
             onClick={() => scrollToSection('planos')}
           >
-            Seja um Partner
+            <span>Seja um parceiro</span>
           </Button>
           <Button
             size="lg"
@@ -64,7 +64,7 @@ export function HeroSection() {
             className="w-full sm:w-auto text-base font-semibold px-8 py-6 rounded-xl border-white/10 hover:bg-white/5 text-white hover:text-white transition-all duration-300 cursor-pointer"
             onClick={() => scrollToSection('como-funciona')}
           >
-            Ver como funciona
+            <span>Ver como funciona</span>
           </Button>
         </div>
       </motion.div>
@@ -111,7 +111,9 @@ function AnimatedCounter() {
   return (
     <p className="text-green-400 font-bold tracking-wide text-sm md:text-base flex items-center gap-2">
       <span className="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-      Mais de <span className="text-white text-lg font-black">{value.toLocaleString()}+</span> recargas processadas este mês!
+      <span>Mais de </span>
+      <span className="text-white text-lg font-black">{value.toLocaleString()}+</span>
+      <span> recargas processadas deste mês!</span>
     </p>
   )
 }
