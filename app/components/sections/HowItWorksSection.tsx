@@ -35,7 +35,6 @@ export function HowItWorksSection() {
       id="como-funciona" 
       className="relative py-16 md:py-24 px-6 bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden scroll-mt-20"
     >
-      {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ opacity: [0.3, 0.5, 0.3] }}
@@ -45,7 +44,6 @@ export function HowItWorksSection() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +59,6 @@ export function HowItWorksSection() {
           <p className="text-zinc-400 text-lg">4 passos simples para começar a ganhar</p>
         </motion.div>
 
-        {/* Timeline */}
         <div className="space-y-8 md:space-y-0 md:grid md:grid-cols-4 md:gap-4">
           {steps.map((step, index) => (
             <motion.div
@@ -72,12 +69,10 @@ export function HowItWorksSection() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Card */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="glass p-6 md:p-8 rounded-2xl border border-cyan-500/30 h-full flex flex-col items-center text-center group cursor-pointer hover:border-cyan-500/60 transition-all duration-300"
               >
-                {/* Number circle */}
                 <motion.div
                   animate={{ boxShadow: ['0 0 20px rgba(0, 174, 255, 0.4)', '0 0 40px rgba(0, 174, 255, 0.6)', '0 0 20px rgba(0, 174, 255, 0.4)'] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -88,21 +83,17 @@ export function HowItWorksSection() {
                   </span>
                 </motion.div>
 
-                {/* Icon */}
                 <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {step.icon}
                 </div>
 
-                {/* Title */}
                 <h3 className="text-lg md:text-xl font-bold text-white mb-2">{step.title}</h3>
 
-                {/* Description */}
                 <p className="text-sm md:text-base text-zinc-400 group-hover:text-zinc-300 transition-colors">
                   {step.description}
                 </p>
               </motion.div>
 
-              {/* Connector line (desktop only) */}
               {index < steps.length - 1 && (
                 <motion.div
                   initial={{ scaleX: 0 }}
@@ -119,4 +110,4 @@ export function HowItWorksSection() {
     </section>
   )
 }
-      
+
