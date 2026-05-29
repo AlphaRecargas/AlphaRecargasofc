@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: 'Alpha Recargas',
     template: '%s | Alpha Recargas',
   },
-  description: 'Sistema profissional de recargas e gerenciamento.',
+  description: 'Plataforma profissional de recargas e gerenciamento.',
   metadataBase: new URL('https://v0-alpha-recargas-whatsapp.vercel.app'),
   
   // ÍCONES DA ABA (FAVICON)
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   // PREVIEW DE COMPARTILHAMENTO
   openGraph: {
     title: 'Alpha Recargas',
-    description: 'Sistema profissional de recargas e gerenciamento.',
+    description: 'Plataforma profissional de recargas e gerenciamento.',
     url: '/',
     siteName: 'Alpha Recargas',
     images: [
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Alpha Recargas',
-    description: 'Sistema profissional de recargas',
+    description: 'Plataforma profissional de recargas e gerenciamento.',
     images: ['/preview.png'],
   },
 }
@@ -93,5 +93,5 @@ export default function RootLayout({
       </body>
     </html>
   )
-}
+      }
 
