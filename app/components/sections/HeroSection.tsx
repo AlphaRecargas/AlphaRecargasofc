@@ -6,20 +6,14 @@ import { Button } from '@/components/ui/button'
 
 export function HeroSection() {
   const scrollToSection = (id: string) => {
-    let element = document.getElementById(id)
-    
-    // Fallback inteligente caso os IDs das outras seções tenham sido nomeados diferentes
-    if (!element && id === 'como-funciona') {
-      element = document.getElementById('beneficios') || document.getElementById('planos')
-    }
-
+    const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#0a0e27] overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center bg-[#0a0e27] overflow-hidden pt-16">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-[#0a0e27] to-cyan-900/30" />
 
       {/* LUZES AMBIENTES */}
@@ -29,16 +23,11 @@ export function HeroSection() {
       <motion.div
         initial="hidden"
         animate="visible"
-        variants={{
-          visible: { transition: { staggerChildren: 0.15 } },
-        }}
+        variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
         className="relative z-10 text-center px-6 max-w-4xl"
       >
         <motion.h1
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 1, y: 0 },
-          }}
+          variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
           className="text-4xl md:text-6xl font-bold text-white mb-6 font-sans leading-tight"
         >
           Ganhe dinheiro com{' '}
@@ -48,51 +37,30 @@ export function HeroSection() {
         </motion.h1>
 
         <motion.p
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
+          variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
           className="text-zinc-400 text-lg md:text-xl mb-6 font-sans max-w-2xl mx-auto"
         >
-          Plataforma simples, rápida e altamente lucrativa para o seu negócio expandir.
+          Plataforma simples, rápida e altamente lucrative para o seu negócio expandir.
         </motion.p>
 
         <AnimatedCounter />
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          {/* BOTÃO COM GRADIENTE E BRILHO VIA TAILWIND */}
-          <div className="relative group w-full sm:w-auto">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-md translate-x-[-100%] group-hover:translate-x-[100%] pointer-events-none" />
-            <Button 
-              className="w-full sm:w-auto font-sans font-medium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 transition-all transform hover:scale-[1.02] size-lg h-11 px-8 rounded-md"
-              onClick={() => scrollToSection('planos')}
-            >
-              Começar agora
-            </Button>
-          </div>
+          <Button 
+            className="w-full sm:w-auto font-sans font-medium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 transition-all transform hover:scale-[1.02] h-11 px-8 rounded-md cursor-pointer"
+            onClick={() => scrollToSection('planos')}
+          >
+            Começar agora
+          </Button>
 
           <Button 
             variant="outline" 
             size="lg" 
-            className="w-full sm:w-auto font-sans font-medium border-white/20 text-white hover:bg-white/5 transition-colors"
+            className="w-full sm:w-auto font-sans font-medium border-white/20 text-white hover:bg-white/5 transition-colors cursor-pointer"
             onClick={() => scrollToSection('como-funciona')}
           >
             Ver como funciona
           </Button>
-        </div>
-      </motion.div>
-
-      {/* ROLAGEM MOUSE */}
-      <motion.div
-        onClick={() => scrollToSection('planos')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer hidden md:block z-20"
-      >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2 hover:border-cyan-400 transition-colors">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.2, repeat: Infinity }}
-            className="w-1 h-2 bg-white/60 rounded-full"
-          />
         </div>
       </motion.div>
     </section>
@@ -124,7 +92,8 @@ function AnimatedCounter() {
 
   return (
     <p className="text-green-400 text-sm md:text-base mt-4 font-sans font-semibold tracking-wide bg-green-500/5 border border-green-500/10 px-4 py-2 rounded-full inline-block select-none">
-      + R$ {value.toLocaleString('pt-BR')} faturados hoje
+      + R$ {value.toLocaleString('pt-BR')} faturados esse mês
     </p>
   )
 }
+
