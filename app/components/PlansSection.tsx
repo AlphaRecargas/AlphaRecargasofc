@@ -131,3 +131,4 @@ export function PlansSection() {
     </motion.section>
   )
 }
+
