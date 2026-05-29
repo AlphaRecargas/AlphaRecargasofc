@@ -31,7 +31,10 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section className="relative py-16 md:py-24 px-6 bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden">
+    <section 
+      id="como-funciona" 
+      className="relative py-16 md:py-24 px-6 bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#1a1f3a] overflow-hidden scroll-mt-20"
+    >
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -86,33 +89,5 @@ export function HowItWorksSection() {
                 </motion.div>
 
                 {/* Icon */}
-                <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {step.icon}
-                </div>
+                <div className="text-4xl
 
-                {/* Title */}
-                <h3 className="text-lg md:text-xl font-bold text-white mb-2">{step.title}</h3>
-
-                {/* Description */}
-                <p className="text-sm md:text-base text-zinc-400 group-hover:text-zinc-300 transition-colors">
-                  {step.description}
-                </p>
-              </motion.div>
-
-              {/* Connector line (desktop only) */}
-              {index < steps.length - 1 && (
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="hidden md:block absolute top-24 -right-2 w-8 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 origin-left"
-                />
-              )}
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
