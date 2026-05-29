@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-// Importações dos componentes
 import { Navbar } from './components/Navbar'
 import { HeroSection } from './components/sections/HeroSection'
 import { PlansSection } from './components/PlansSection'
@@ -16,7 +15,6 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp'
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0a0e27] text-white">
-      {/* Renderização condicional segura: só exibe se o componente não for undefined */}
       {Navbar && <Navbar />}
       {HeroSection && <HeroSection />}
       {PlansSection && <PlansSection />}
@@ -29,4 +27,3 @@ export default function Home() {
     </main>
   )
 }
-
